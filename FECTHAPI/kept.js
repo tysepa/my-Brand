@@ -1,7 +1,7 @@
 const postList = document.querySelector('.blog-content');
 const addMess = document.querySelector('.form')
 const btned = document.querySelector('.btn-edit')
-const token ='bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6IkVwYSIsImVtYWlsIjoiZXBhQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NDc5NTQ0Njd9.ojNZrgY4HiUyyYJ1OY5RZog7LIdn7rqAbUIh6guJM70'
+const token ='bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiZXBhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiS2lnYWxpIn0sImlhdCI6MTY0ODIzNTI3NX0.qCiuc1ZN_EAlHeRnvJlJlRa7A4_OI84EufrNVmNciuE'
 
 
 const url = 'http://localhost:5000/displ';
@@ -29,6 +29,7 @@ const renderPosts = (posts)=>{
 fetch(url, {
     method:'GET',
     headers:{
+        'Content-Type':'application/json',
         'Authorization': 'bearer' + token,
     }
 })

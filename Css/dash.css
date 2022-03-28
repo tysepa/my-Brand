@@ -32,7 +32,7 @@
 }
 .sidebar-menu li {
   width: 100%;
-  margin-bottom: 2px;
+  margin-bottom: 35px;
   padding-left: 1rem;
 }
 .sidebar-menu a {
@@ -576,17 +576,21 @@ textarea {
   margin: 30px 0;
   font-family: "Roboto", sans-serif;
 }
-.posts .col-sm-4 {
+.posts .part {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   justify-content: space-between;
 }
-.posts .col-sm-4 .card {
+.posts .part .box {
   width: calc(35% - 20px);
   background: #050505;
   border-radius: 5px;
   padding: 20px 25px;
   text-align: center;
   transition: all 0.3s ease;
+}
+.posts .part .box .img{
+  width: 45px;
+  height: 100px;
 }

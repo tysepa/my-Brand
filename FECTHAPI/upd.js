@@ -5,7 +5,7 @@ const bodyValue = document.getElementById('post');
 const imgUrl = document.getElementById('image') 
 const btnsub = document.getElementById('btsuc');
 
-const token ='bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6IkVwYSIsImVtYWlsIjoiZXBhQGdtYWlsLmNvbSJ9LCJpYXQiOjE2NDc5NTQ0Njd9.ojNZrgY4HiUyyYJ1OY5RZog7LIdn7rqAbUIh6guJM70'
+const token ='bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImVtYWlsIjoiZXBhQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiS2lnYWxpIn0sImlhdCI6MTY0ODIzNTI3NX0.qCiuc1ZN_EAlHeRnvJlJlRa7A4_OI84EufrNVmNciuE'
 
 
 const url = 'http://localhost:5000/displ';
@@ -20,10 +20,12 @@ const renderPosts = (posts)=>{
         output +=`
         <div class='part'>
            <div class='box' data-id='${post._id}'>
+           <center>
            <img src='${post.photo}' style ='height:250px;'>
            <p class='text'>${post.name} </p> <p class='card-text'>${post.tech}</p>
            <button class='btn btn-delet' id='delete_post'>Delete</button>
            <button class='btn btn-edit' id='edit_post'>Edit</button>
+           </center>
            </div></div></div>
         
         `;
@@ -53,13 +55,14 @@ const renderPosts = (posts)=>{
        // Delete Method
 
        if(deltBtnPress){
-           const response = await fetch('http://localhost:5000/displ/'+ id,{
+           const response = await fetch('http://localhost:5000/displ/'+id,{
                method:'DELETE',
                headers:{
-                   'Content-Type': 'application/json',
+                'X-Content-Type-Options': 'nosniff',
+                   'Content-Type': "application/json", 
                    'Authorization': 'bearer ' + token,
                },
-               body: null
+               
            });
           const data = await response.json()
           console.log(data);
@@ -79,7 +82,7 @@ const renderPosts = (posts)=>{
        await fetch(`${url}/${id}`,{
             method: 'PATCH',
             headers:{
-             'Content-Type':'application/json',
+             'Content-Type': "application/json",
              'Authorization': 'bearer ' + token,
             },
             body: JSON.stringify({
